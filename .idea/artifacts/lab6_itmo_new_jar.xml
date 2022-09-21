@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="lab6_itmo_new:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab6_itmo_new_jar</output-path>
+    <root id="archive" name="lab6_itmo_new.jar">
+      <element id="module-output" name="lab6_itmo_new" />
+    </root>
+  </artifact>
+</component>
