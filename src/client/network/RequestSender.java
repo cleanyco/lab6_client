@@ -32,7 +32,7 @@ public class RequestSender {
             os = clientSocket.getOutputStream();
             os.write(byteRequest);
             os.flush();
-            System.out.println("Отпрвляем запрос...");
+            System.out.println("Отправляем запрос...");
 
             is = clientSocket.getInputStream();
             ObjectInputStream ois = new ObjectInputStream(is);
@@ -42,9 +42,13 @@ public class RequestSender {
             //FIXME посмотреть документацию на наличие выбрасываемых exception'ов
             //FIXME придумать, как закрыть потоки ois и oos
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Неудачная попытка подключения к серверу!\n" +
-                    "Попробуем еще раз...");
-            connectionAttempts++;
+            if (request.command.equals("exit")) {
+                System.out.println("Работа клиентского приложения завершена, коллекция сохранена.");
+            } else {
+                System.out.println("Неудачная попытка подключения к серверу!\n" +
+                        "Попробуем еще раз...");
+                connectionAttempts++;
+            }
 
             try {
                 Thread.sleep(2000);
@@ -59,7 +63,6 @@ public class RequestSender {
                 sendRequest(request);
             }
         }
-        //FIXME
         return new Response(ResponseCode.ERROR, "Не удалось подключиться к серверу.");
     }
 }
