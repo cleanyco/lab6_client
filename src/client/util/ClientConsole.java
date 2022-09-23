@@ -91,7 +91,7 @@ public class ClientConsole {
             try {
                 parseCommand(input);
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("Произошла непредвиденная ошибка при чтении скрипта, остановка...");
             }
             //FIXME what's purpose of this huh?
             System.out.println("");

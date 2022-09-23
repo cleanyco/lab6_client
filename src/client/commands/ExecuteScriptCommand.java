@@ -47,6 +47,7 @@ public class ExecuteScriptCommand implements Command {
             System.out.println("Скрипт '" + argument + "' исполняется..." );
             scriptStack.add(argument);
             clientConsole.executeScript(scriptScanner);
+            scriptStack.remove(argument);
 //            Request<String> request = new Request<>("execute_script", argument);
 //            Response response = requestSender.sendRequest(request);
 //            if (response.getResponseCode() == ResponseCode.OK) {
